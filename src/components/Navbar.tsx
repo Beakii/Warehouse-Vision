@@ -1,9 +1,12 @@
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import { buttonVariants } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 
-const Navbar = () => {
+type NavbarProps = {
+	isEditable: boolean
+	setIsEditable: React.Dispatch<React.SetStateAction<boolean>>;
+  };
 
+const Navbar = ({isEditable, setIsEditable}: NavbarProps) => {
 	return (
 		<nav className="sticky inset-x-0 top-0 z-[100] h-14 w-full border-b border-slate-200 bg-slate-300/75 backdrop-blur-lg transition-all">
 			<MaxWidthWrapper>
@@ -27,16 +30,15 @@ const Navbar = () => {
 
 								<div className="hidden h-8 w-px bg-zinc-200 sm:block" />
 
-								<a
-									href="/configure/upload"
+								<div
+									onClick={()=>setIsEditable(!isEditable)}
 									className={buttonVariants({
 										size: "sm",
 										className: "hidden items-center gap-1 sm:flex",
 									})}
 								>
-									Create
-									<ArrowRight className="ml-1.5 h-5 w-5" />
-								</a>
+									{isEditable ? "Ok" : "Edit"}
+								</div>
 							</>
 					</div>
 				</div>
