@@ -18,15 +18,14 @@ const Navbar = ({isEditable, setIsEditable}: NavbarProps) => {
 
 					<div className="flex h-full items-center space-x-4">
 							<>
-								<a
-									href="/api/auth/signin"
+								<div
 									className={buttonVariants({
 										size: "sm",
 										variant: "ghost",
 									})}
 								>
-									Login
-								</a>
+									Eventually Login
+								</div>
 
 								<div className="hidden h-8 w-px bg-zinc-200 sm:block" />
 

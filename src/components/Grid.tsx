@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 
 type GridSelectorProps = {
   size: number;
-  isEditable: boolean
+  isEditable: boolean;
+  selectedCells: number[];
+  setSelectedCells:  React.Dispatch<React.SetStateAction<number[]>>;
 };
 
-export default function GridSelector({ size, isEditable }: GridSelectorProps) {
-  const [selectedCells, setSelectedCells] = useState<number[]>([]);
+export default function GridSelector({ size, isEditable, selectedCells, setSelectedCells }: GridSelectorProps) {
+
   const [cellSize, setCellSize] = useState(40); // default
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function GridSelector({ size, isEditable }: GridSelectorProps) {
   };
 
   return (
-<div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen">
       <div
         className="grid gap-0"
         style={{
