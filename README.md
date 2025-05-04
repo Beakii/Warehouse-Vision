@@ -52,7 +52,7 @@ It features a customizable "warehouse designer" where users can create and adjus
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/warehouse-vision.git
+git clone https://github.com/Beakii/warehouse-vision.git
 cd warehouse-vision
 ```
 
@@ -77,24 +77,6 @@ pnpm dev
 ```
 
 The app will be running locally at [http://localhost:5173](http://localhost:5173).
-
----
-
-## Project Structure (Example)
-
-```
-├── public/
-├── src/
-│   ├── components/         # Reusable UI components (e.g., Grid, Racking Units)
-│   ├── features/designer/  # Warehouse designer specific logic
-│   ├── hooks/              # Custom React hooks
-│   ├── styles/             # Tailwind and global styles
-│   ├── App.tsx
-│   └── main.tsx
-├── tailwind.config.ts
-├── vite.config.ts
-└── README.md
-```
 
 ---
 
