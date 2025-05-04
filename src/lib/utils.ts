@@ -19,37 +19,6 @@ export const updateCellSize = ({size, setCellSize} : UpdateCellsInterface) => {
 };
 
 export let RenewITLayout: number[] = [
-  12,
-  24,
-  36,
-  48,
-  60,
-  72,
-  84,
-  96,
-  108,
-  120,
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  10,
-  9,
-  23,
-  35,
-  47,
-  59,
-  71,
-  83,
-  95,
-  107,
-  119,
-  131,
-  143,
   125,
   113,
   101,
@@ -65,47 +34,102 @@ export let RenewITLayout: number[] = [
   90,
   102,
   114,
-  126
+  126,
+  6,
+  3,
+  5,
+  8,
+  4,
+  7,
+  13,
+  25,
+  37,
+  49,
+  61,
+  73,
+  85,
+  97,
+  22,
+  34,
+  46,
+  58,
+  70,
+  82,
+  94,
+  106,
+  118,
+  130,
+  142
 ];
 
 export const mapGridToLocationName = (index:number) => {
   switch(index){
-    //#Right Wall 
-    case 143:
+    //Right Wall
+    //#region 
+    case 142:
       return 'AB'
-    case 131:
+    case 130:
       return 'AA'
-    case 119:
+    case 18:
       return 'BB'
-    case 107:
+    case 106:
       return 'BA'
-    case 95:
+    case 94:
       return 'CB'
-    case 83:
+    case 82:
       return 'CA'
-    case 71:
+    case 70:
       return 'DB'
-    case 59:
+    case 58:
       return 'DA'
-    case 47:
+    case 46:
       return 'EB'
-    case 35:
+    case 34:
       return 'EA'
-    case 23:
-      return 'F'
-      //#endregion
+    case 22:
+      return 'FA'
+    //#endregion
     
-    case 10:
-      return 'GB'
-    case 9:
-      return 'GA'
+    //Top Wall
+    //#region
     case 8:
-      return 'HB'
+      return 'GB'
     case 7:
-      return 'HA'
+      return 'GA'
     case 6:
-      return 'IB'
+      return 'HB'
     case 5:
+      return 'HA'
+    case 4:
+      return 'IB'
+    case 3:
       return 'IA'
+    //#endregion
+    
+    //Left Wall
+    //#region 
+    case 13:
+      return 'JB'
+    case 25:
+      return 'JA'
+    case 37:
+      return 'KB'
+    case 49:
+      return 'KA'
+    case 61:
+      return 'LB'
+    case 73:
+      return 'LA'
+    case 85:
+      return 'MB'
+    case 97:
+      return 'MA'
+    //#endregion
+  
+    //Center Left
+    //#region 
+    case 41:
+      return 'QB'
+    //#endregion
   }
 }
