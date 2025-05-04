@@ -1,13 +1,12 @@
 import { useState } from "react";
-import GridSelector from "./components/Grid"
+import GridLayout from "./components/GridLayout"
 import Navbar from './components/Navbar'
-import WarehouseLayout from "./components/WarehouseLayout";
 
 function App() {
   const [isEditable, setIsEditable] = useState(false);
   const [selectedCells, setSelectedCells] = useState<number[]>([]);
 
-  const number = 10;
+  const gridSize = 12;
 
   return (
     <div className="bg-slate-600 w-screen h-screen">
@@ -16,17 +15,11 @@ function App() {
         setIsEditable={setIsEditable}
       />
 
-      {
-        isEditable
-        ?
-        <GridSelector 
-          size={number} 
+    <GridLayout 
+          size={gridSize} 
           isEditable={isEditable} 
           selectedCells={selectedCells} 
           setSelectedCells={setSelectedCells}/>
-        :
-        <WarehouseLayout size={number} selectedCells={selectedCells}/>
-      }
     </div>
   )
 }
