@@ -70,7 +70,7 @@ export const mapGridToLocationName = (index:number) => {
       return 'AB'
     case 130:
       return 'AA'
-    case 18:
+    case 118:
       return 'BB'
     case 106:
       return 'BA'
@@ -129,7 +129,41 @@ export const mapGridToLocationName = (index:number) => {
     //Center Left
     //#region 
     case 41:
+      return 'NA'
+    case 53:
+      return 'NV'
+    case 65:
+      return 'OA'
+    case 77:
+      return 'OB'
+    case 89:
+      return 'PA'
+    case 101:
+      return 'PB'
+    case 113:
+      return 'QA'
+    case 125:
       return 'QB'
+    //#endregion
+  
+    //Center Right
+    //#region 
+    case 42:
+      return 'UB'
+    case 54:
+      return 'UA'
+    case 66:
+      return 'TB'
+    case 78:
+      return 'TA'
+    case 90:
+      return 'SB'
+    case 102:
+      return 'SA'
+    case 114:
+      return 'RB'
+    case 126:
+      return 'RA'
     //#endregion
   }
 }

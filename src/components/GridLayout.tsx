@@ -56,7 +56,7 @@ export default function GridLayout({ size, isEditable, selectedCells, setSelecte
                 }`
               }
             >
-              {isSelected ? i : null}
+              {isSelected ? mapGridToLocationName(i) : null}
             </div>
           );
         })}
