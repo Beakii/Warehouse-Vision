@@ -62,108 +62,27 @@ export let RenewITLayout: number[] = [
   142
 ];
 
-export const mapGridToLocationName = (index:number) => {
-  switch(index){
-    //Right Wall
-    //#region 
-    case 142:
-      return 'AB'
-    case 130:
-      return 'AA'
-    case 118:
-      return 'BB'
-    case 106:
-      return 'BA'
-    case 94:
-      return 'CB'
-    case 82:
-      return 'CA'
-    case 70:
-      return 'DB'
-    case 58:
-      return 'DA'
-    case 46:
-      return 'EB'
-    case 34:
-      return 'EA'
-    case 22:
-      return 'FA'
-    //#endregion
-    
-    //Top Wall
-    //#region
-    case 8:
-      return 'GB'
-    case 7:
-      return 'GA'
-    case 6:
-      return 'HB'
-    case 5:
-      return 'HA'
-    case 4:
-      return 'IB'
-    case 3:
-      return 'IA'
-    //#endregion
-    
-    //Left Wall
-    //#region 
-    case 13:
-      return 'JB'
-    case 25:
-      return 'JA'
-    case 37:
-      return 'KB'
-    case 49:
-      return 'KA'
-    case 61:
-      return 'LB'
-    case 73:
-      return 'LA'
-    case 85:
-      return 'MB'
-    case 97:
-      return 'MA'
-    //#endregion
-  
-    //Center Left
-    //#region 
-    case 41:
-      return 'NA'
-    case 53:
-      return 'NV'
-    case 65:
-      return 'OA'
-    case 77:
-      return 'OB'
-    case 89:
-      return 'PA'
-    case 101:
-      return 'PB'
-    case 113:
-      return 'QA'
-    case 125:
-      return 'QB'
-    //#endregion
-  
-    //Center Right
-    //#region 
-    case 42:
-      return 'UB'
-    case 54:
-      return 'UA'
-    case 66:
-      return 'TB'
-    case 78:
-      return 'TA'
-    case 90:
-      return 'SB'
-    case 102:
-      return 'SA'
-    case 114:
-      return 'RB'
-    case 126:
-      return 'RA'
-    //#endregion
-  }
-}
+export const mapGridToLocationName = (index: number): string => {
+  const indexToName = new Map<number, string>([
+    // Right Wall
+    [142, 'AB'], [130, 'AA'], [118, 'BB'], [106, 'BA'], [94, 'CB'], [82, 'CA'],
+    [70, 'DB'], [58, 'DA'], [46, 'EB'], [34, 'EA'], [22, 'FA'],
+
+    // Top Wall
+    [8, 'GB'], [7, 'GA'], [6, 'HB'], [5, 'HA'], [4, 'IB'], [3, 'IA'],
+
+    // Left Wall
+    [13, 'JB'], [25, 'JA'], [37, 'KB'], [49, 'KA'], [61, 'LB'], [73, 'LA'],
+    [85, 'MB'], [97, 'MA'],
+
+    // Center Left
+    [41, 'NA'], [53, 'NV'], [65, 'OA'], [77, 'OB'], [89, 'PA'], [101, 'PB'],
+    [113, 'QA'], [125, 'QB'],
+
+    // Center Right
+    [42, 'UB'], [54, 'UA'], [66, 'TB'], [78, 'TA'], [90, 'SB'], [102, 'SA'],
+    [114, 'RB'], [126, 'RA']
+  ]);
+
+  return indexToName.get(index)!;
+};

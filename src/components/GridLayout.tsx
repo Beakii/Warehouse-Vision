@@ -1,5 +1,9 @@
 import {  mapGridToLocationName, RenewITLayout, updateCellSize } from '@/lib/utils';
 import { useEffect, useState } from 'react';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from './ui/hover-card';
+import { Card, CardContent, CardHeader } from './ui/card';
+import { Accordion, AccordionContent, AccordionTrigger } from './ui/accordion';
+import { AccordionItem } from '@radix-ui/react-accordion';
 
 type GridLayoutProps = {
   size: number;
@@ -40,24 +44,67 @@ export default function GridLayout({ size, isEditable, selectedCells, setSelecte
         {Array.from({ length: size * size }).map((_, i) => {
           const isSelected = selectedCells.includes(i);
           return (
-            <div
-              key={i}
-              onClick={() => handleClick(i)}
-              style={{
-                width: `${cellSize}px`,
-                height: `${cellSize}px`,
-              }}
-              className={`border border-gray-400 transition-colors duration-200 
-                ${isEditable ? 'cursor-pointer' : 'pointer-events-none'} 
-                ${
-                  isSelected 
-                  ? isEditable ? 'bg-green-400' : 'bg-blue-500'
-                  : isEditable ? 'bg-white' : 'bg-slate-600 border-none'
-                }`
+            <HoverCard>
+              <HoverCardTrigger>
+                <div
+                key={i}
+                onClick={() => handleClick(i)}
+                style={{
+                  width: `${cellSize}px`,
+                  height: `${cellSize}px`,
+                }}
+                className={`border border-gray-400 transition-colors duration-200 
+                  ${isEditable ? 'cursor-pointer' : 'pointer-events-none'} 
+                  ${
+                    isSelected 
+                    ? isEditable ? 'bg-green-400' : 'bg-blue-500'
+                    : isEditable ? 'bg-white' : 'bg-slate-600 border-none'
+                  }`
+                }
+              >
+                {isSelected ? mapGridToLocationName(i) : null}
+              </div>    
+              </HoverCardTrigger>
+
+              {
+                isSelected
+                ?
+                <HoverCardContent>
+                  <Card>
+                    <CardHeader>
+                      {"Pallet's in Location: "+mapGridToLocationName(i)}
+                    </CardHeader>
+                    
+                    <CardContent>
+                      <Accordion type='single' collapsible>
+                        <AccordionItem value='item-1'>
+                          <AccordionTrigger>{mapGridToLocationName(i)+"1"}</AccordionTrigger>
+                          <AccordionContent>
+                            Pallet Name
+                          </AccordionContent>
+                        </AccordionItem>
+
+                        <AccordionItem value='item-2'>
+                          <AccordionTrigger>{mapGridToLocationName(i)+"2"}</AccordionTrigger>
+                          <AccordionContent>
+                            Pallet Name
+                          </AccordionContent>
+                        </AccordionItem>
+
+                        <AccordionItem value='item-3'>
+                          <AccordionTrigger>{mapGridToLocationName(i)+"3"}</AccordionTrigger>
+                          <AccordionContent>
+                            Pallet Name
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    </CardContent>
+                  </Card>
+                </HoverCardContent>
+                :
+                null
               }
-            >
-              {isSelected ? mapGridToLocationName(i) : null}
-            </div>
+            </HoverCard>
           );
         })}
       </div>
