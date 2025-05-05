@@ -1,4 +1,4 @@
-import {  mapGridToLocationName, RenewITLayout, updateCellSize } from '@/lib/utils';
+import {  mapGridToLocationName, MockAssetUIDS, RenewITLayout, updateCellSize } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './ui/hover-card';
 import { Card, CardContent, CardHeader } from './ui/card';
@@ -72,7 +72,7 @@ export default function GridLayout({ size, isEditable, selectedCells, setSelecte
                 <HoverCardContent>
                   <Card>
                     <CardHeader>
-                      {"Pallet's in Location: "+mapGridToLocationName(i)}
+                      {"Rack "+mapGridToLocationName(i)}
                     </CardHeader>
                     
                     <CardContent>
@@ -80,7 +80,20 @@ export default function GridLayout({ size, isEditable, selectedCells, setSelecte
                         <AccordionItem value='item-1'>
                           <AccordionTrigger>{mapGridToLocationName(i)+"1"}</AccordionTrigger>
                           <AccordionContent>
-                            Pallet Name
+                            <Accordion type='single' collapsible>
+                              <AccordionItem value='sub-item-1'>
+                                <AccordionTrigger>Pallet Name</AccordionTrigger>
+                                  {
+                                    MockAssetUIDS.map((uid, index) => {
+                                      return(
+                                      <AccordionContent key={index}>
+                                        {uid}
+                                      </AccordionContent>
+                                      );
+                                    })
+                                  }
+                              </AccordionItem>
+                            </Accordion>
                           </AccordionContent>
                         </AccordionItem>
 

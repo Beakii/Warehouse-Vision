@@ -62,6 +62,17 @@ export let RenewITLayout: number[] = [
   142
 ];
 
+export const MockAssetUIDS: string[] = [
+  "7FQ9L2XGHB",
+  "Q1M8CZ7RVE",
+  "XK5PT6AWND",
+  "JZ9RB4KMUY",
+  "LMX3D2WQTC",
+  "VRU68PEJYB",
+  "T9H7KCAVQM",
+  "WBZ1QXY64L"
+];
+
 export const mapGridToLocationName = (index: number): string => {
   const indexToName = new Map<number, string>([
     // Right Wall
