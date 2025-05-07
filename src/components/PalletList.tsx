@@ -17,7 +17,7 @@ const PalletList = ({index}:PalletListProps) => {
             <CardContent>
             <Accordion type='single' collapsible>
                 {
-                    Array(location.levels).map((_, i) => {
+                    [...Array(location.levels)].map((_, i) => {
                         return(
                             <AccordionItem value={`item-${i+1}`}>
                                 <AccordionTrigger>{mapGridToLocationName(index)+(i+1)}</AccordionTrigger>

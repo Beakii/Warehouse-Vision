@@ -64,9 +64,15 @@ export default function GridLayout({ size, isEditable, selectedCells, setSelecte
                 </div>    
               </HoverCardTrigger>
               
-              <HoverCardContent>
-                <PalletList index={i}/>
-              </HoverCardContent>
+              {
+                isSelected
+                ?
+                <HoverCardContent>
+                  <PalletList index={i}/>
+                </HoverCardContent>
+                :
+                null
+              }
             </HoverCard>
           );
         })}
