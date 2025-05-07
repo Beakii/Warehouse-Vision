@@ -5,6 +5,64 @@ export function cn(...inputs: ClassValue[]){
   return twMerge(clsx(inputs))
 }
 
+type LocationInfo = {
+  name: string;
+  levels: number;
+};
+
+const indexToLocationInfo = new Map<number, LocationInfo>([
+  // Right Wall
+  [142, { name: 'AB', levels: 3 }],
+  [130, { name: 'AA', levels: 3 }],
+  [118, { name: 'BB', levels: 3 }],
+  [106, { name: 'BA', levels: 3 }],
+  [94,  { name: 'CB', levels: 3 }],
+  [82,  { name: 'CA', levels: 3 }],
+  [70,  { name: 'DB', levels: 3 }],
+  [58,  { name: 'DA', levels: 3 }],
+  [46,  { name: 'EB', levels: 3 }],
+  [34,  { name: 'EA', levels: 3 }],
+  [22,  { name: 'FA', levels: 3 }],
+
+  // Top Wall
+  [8,  { name: 'GB', levels: 1 }],
+  [7,  { name: 'GA', levels: 1 }],
+  [6,  { name: 'HB', levels: 1 }],
+  [5,  { name: 'HA', levels: 1 }],
+  [4,  { name: 'IB', levels: 1 }],
+  [3,  { name: 'IA', levels: 1 }],
+
+  // Left Wall
+  [13, { name: 'JB', levels: 2 }],
+  [25, { name: 'JA', levels: 2 }],
+  [37, { name: 'KB', levels: 2 }],
+  [49, { name: 'KA', levels: 2 }],
+  [61, { name: 'LB', levels: 2 }],
+  [73, { name: 'LA', levels: 2 }],
+  [85, { name: 'MB', levels: 2 }],
+  [97, { name: 'MA', levels: 2 }],
+
+  // Center Left
+  [41,  { name: 'NA', levels: 3 }],
+  [53,  { name: 'NV', levels: 3 }],
+  [65,  { name: 'OA', levels: 3 }],
+  [77,  { name: 'OB', levels: 3 }],
+  [89,  { name: 'PA', levels: 3 }],
+  [101, { name: 'PB', levels: 3 }],
+  [113, { name: 'QA', levels: 3 }],
+  [125, { name: 'QB', levels: 3 }],
+
+  // Center Right
+  [42,  { name: 'UB', levels: 3 }],
+  [54,  { name: 'UA', levels: 3 }],
+  [66,  { name: 'TB', levels: 3 }],
+  [78,  { name: 'TA', levels: 3 }],
+  [90,  { name: 'SB', levels: 3 }],
+  [102, { name: 'SA', levels: 3 }],
+  [114, { name: 'RB', levels: 3 }],
+  [126, { name: 'RA', levels: 3 }]
+]);
+
 type UpdateCellsInterface = {
   size: number;
   setCellSize: React.Dispatch<React.SetStateAction<number>>;
@@ -74,26 +132,9 @@ export const MockAssetUIDS: string[] = [
 ];
 
 export const mapGridToLocationName = (index: number): string => {
-  const indexToName = new Map<number, string>([
-    // Right Wall
-    [142, 'AB'], [130, 'AA'], [118, 'BB'], [106, 'BA'], [94, 'CB'], [82, 'CA'],
-    [70, 'DB'], [58, 'DA'], [46, 'EB'], [34, 'EA'], [22, 'FA'],
+  return indexToLocationInfo.get(index)?.name ?? '';
+};
 
-    // Top Wall
-    [8, 'GB'], [7, 'GA'], [6, 'HB'], [5, 'HA'], [4, 'IB'], [3, 'IA'],
-
-    // Left Wall
-    [13, 'JB'], [25, 'JA'], [37, 'KB'], [49, 'KA'], [61, 'LB'], [73, 'LA'],
-    [85, 'MB'], [97, 'MA'],
-
-    // Center Left
-    [41, 'NA'], [53, 'NV'], [65, 'OA'], [77, 'OB'], [89, 'PA'], [101, 'PB'],
-    [113, 'QA'], [125, 'QB'],
-
-    // Center Right
-    [42, 'UB'], [54, 'UA'], [66, 'TB'], [78, 'TA'], [90, 'SB'], [102, 'SA'],
-    [114, 'RB'], [126, 'RA']
-  ]);
-
-  return indexToName.get(index)!;
+export const getLocationInfo = (index: number): LocationInfo => {
+  return indexToLocationInfo.get(index)!;
 };
