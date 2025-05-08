@@ -1,6 +1,9 @@
 import { getLocationInfo, mapGridToLocationName } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { Draggable } from "./Draggable";
+import { Droppable } from "./Droppable";
+import PalletCard from "./PalletCard";
 
 type PalletListProps = {
     index: number;
@@ -15,17 +18,18 @@ const PalletList = ({index}:PalletListProps) => {
             </CardHeader>
             
             <CardContent>
-            <Accordion type='single' collapsible>
+            <Accordion type="multiple">
                 {
                     [...Array(location.levels)].map((_, i) => {
                         return(
                             <AccordionItem value={`item-${i+1}`}>
-                                <AccordionTrigger>{mapGridToLocationName(index)+(i+1)}</AccordionTrigger>
+                                <Droppable id={`rack-${index}-level-${i+1}`}>
+                                    <AccordionTrigger>{mapGridToLocationName(index)+(i+1)}</AccordionTrigger>
+                                </Droppable>
                                 <AccordionContent>
-                                    <Card>
-                                    <CardHeader>Pallet Name</CardHeader>
-                                    <CardFooter>Moved Here At: dd/mm/yyyy</CardFooter>
-                                    </Card>
+                                    <Draggable id={`pallet-${index}-${i+1}`}>
+                                        <PalletCard/>
+                                    </Draggable>
                                 </AccordionContent>
                             </AccordionItem>
                         );
