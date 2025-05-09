@@ -2,14 +2,13 @@ import { useState } from "react";
 import GridLayout from "./components/GridLayout"
 import Navbar from './components/Navbar'
 import { DndContext, DragOverlay } from "@dnd-kit/core";
+import { createPortal } from "react-dom";
 
 function App() {
   const [isEditable, setIsEditable] = useState(false);
   const [selectedCells, setSelectedCells] = useState<number[]>([]);
   const [draggedItem, setDraggedItem] = useState<React.ReactNode | null>(null);
-
-
-  const gridSize = 12;
+  const [gridSize, setGridSize] = useState<number>(12);
 
   return (
     <div className="bg-slate-600 w-screen h-screen">
@@ -18,11 +17,12 @@ function App() {
         setIsEditable={setIsEditable}
       />
 
-
     <DndContext
       onDragStart={(event) => {
-        setDraggedItem(event.active.data.current?.children);
-        console.log(draggedItem);
+        const item = event.active.data.current?.children;
+        if (item){
+          setDraggedItem(item);
+        }
       }}
       onDragEnd={(event) => {
         setDraggedItem(null);
@@ -35,8 +35,8 @@ function App() {
             setSelectedCells={setSelectedCells}/>
     </DndContext>
 
-    <DragOverlay>
-      {draggedItem}
+    <DragOverlay zIndex={9999}>
+      {createPortal(draggedItem, document.getElementById("drag-overlay-root")!)}
     </DragOverlay>
     </div>
   )
