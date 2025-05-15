@@ -30,17 +30,21 @@ export default function GridLayout({ gridSize, selectedCells, setSelectedCells }
                     gridTemplateColumns: `repeat(${gridSize}, ${cellSize}px)`,
                 }}
             >
-                {Array.from({ length: gridSize * gridSize }).map((_, i) => {
-                    const isSelected = selectedCells.includes(i);
+                {Array.from({ length: gridSize * gridSize }).map((_, gridNumberIndex) => {
+                    const isSelected = selectedCells.includes(gridNumberIndex);
                     return (
                         <Popover>
                             <PopoverTrigger>
-                                <GridItem index={i} cellSize={cellSize} isSelected={isSelected} />
+                                <GridItem
+                                    index={gridNumberIndex}
+                                    cellSize={cellSize}
+                                    isSelected={isSelected}
+                                />
                             </PopoverTrigger>
 
                             {isSelected ? (
                                 <PopoverContent>
-                                    <PalletList index={i} />
+                                    <PalletList gridNumberIndex={gridNumberIndex} />
                                 </PopoverContent>
                             ) : null}
                         </Popover>
