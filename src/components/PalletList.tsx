@@ -1,44 +1,29 @@
 import { getLocationInfo, mapGridToLocationName } from "@/lib/utils";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
-import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
-import { Draggable } from "./Draggable";
-import { Droppable } from "./Droppable";
 import PalletCard from "./PalletCard";
 
 type PalletListProps = {
     index: number;
-}
-const PalletList = ({index}:PalletListProps) => {
+};
+const PalletList = ({ index }: PalletListProps) => {
     const location = getLocationInfo(index);
 
-    return(
-        <Card>
-            <CardHeader>
-            {"Rack "+mapGridToLocationName(index)}
-            </CardHeader>
-            
-            <CardContent>
-            <Accordion type="multiple">
-                {
-                    [...Array(location.levels)].map((_, i) => {
-                        return(
-                            <AccordionItem value={`item-${i+1}`}>
-                                <Droppable id={`rack-${index}-level-${i+1}`}>
-                                    <AccordionTrigger>{mapGridToLocationName(index)+(i+1)}</AccordionTrigger>
-                                </Droppable>
-                                <AccordionContent>
-                                    <Draggable id={`pallet-${index}-${i+1}`}>
-                                        <PalletCard/>
-                                    </Draggable>
-                                </AccordionContent>
-                            </AccordionItem>
-                        );
-                    })
-                }
-            </Accordion>
-            </CardContent>
-        </Card>
+    return (
+        <div>
+            {"Rack " + mapGridToLocationName(index)}
+
+            {[...Array(location.levels)].map((_, i) => {
+                return (
+                    <div
+                        className="bg-amber-300 flex justify-center content-center items-center border-2 border-black p-1 m-1"
+                        id={`rack-${index}-level-${i + 1}`}
+                    >
+                        <div className="text-sm px-2">{mapGridToLocationName(index) + (i + 1)}</div>
+                        <PalletCard index={index} />
+                    </div>
+                );
+            })}
+        </div>
     );
-}
+};
 
 export default PalletList;
