@@ -1,6 +1,6 @@
 # Warehouse Vision
 
-![Warehouse Vision Screenshot](https://imgur.com/FAbQs26)
+![Warehouse Vision Screenshot](./public/preview.png)
 
 **Warehouse Vision** is an interactive warehouse management tool designed to help visualize, plan, and manage racking spaces within a warehouse.  
 It features a resizable grid — each grid square representing one pallet's worth of racking space.
