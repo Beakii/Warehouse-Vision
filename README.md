@@ -1,18 +1,9 @@
-Here’s your updated `README.md` with:
-
--   **All references to drag and drop removed** (including `dnd-kit`),
--   **New description reflecting the button-based pallet relocation**,
--   **Included preview image** for visual reference.
-
----
-
-````md
 # Warehouse Vision
 
 ![Warehouse Vision Screenshot](https://imgur.com/FAbQs26)
 
 **Warehouse Vision** is an interactive warehouse management tool designed to help visualize, plan, and manage racking spaces within a warehouse.  
-It features a customizable "warehouse designer" where users can create and adjust warehouse layouts on a resizable grid — each grid square representing one pallet's worth of racking space.
+It features a resizable grid — each grid square representing one pallet's worth of racking space.
 
 ---
 
@@ -28,9 +19,6 @@ _(More dependencies may be added as the project evolves.)_
 ---
 
 ## Features
-
--   📦 **Warehouse Designer**  
-    Select and customize your warehouse layout using a resizable grid where each square represents a pallet-sized space.
 
 -   🛠️ **Configurable Grid System**  
     Adjust grid dimensions to match different warehouse layouts and racking strategies.
@@ -66,7 +54,6 @@ _(More dependencies may be added as the project evolves.)_
 git clone https://github.com/Beakii/warehouse-vision.git
 cd warehouse-vision
 ```
-````
 
 ### 2. Install Dependencies
 
@@ -102,7 +89,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 -   [TailwindCSS](https://tailwindcss.com/) for styling
 -   [Shadcn UI](https://ui.shadcn.dev/) for ready-to-use headless components
-
-```
-
-```
