@@ -99,7 +99,7 @@ export const PalletLocations = [
     },
     {
         location: "BA",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "DP-2306" }, { palletName: "" }, { palletName: "DP-2306" }],
     },
     {
         location: "CB",
@@ -119,7 +119,7 @@ export const PalletLocations = [
     },
     {
         location: "EB",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "" }, { palletName: "" }, { palletName: "" }],
     },
     {
         location: "EA",
@@ -135,11 +135,11 @@ export const PalletLocations = [
     },
     {
         location: "GA",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "" }],
     },
     {
         location: "HB",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
     },
     {
         location: "HA",
@@ -155,7 +155,7 @@ export const PalletLocations = [
     },
     {
         location: "JB",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "DP-2306" }, { palletName: "" }, { palletName: "DP-2306" }],
     },
     {
         location: "JA",
@@ -171,11 +171,11 @@ export const PalletLocations = [
     },
     {
         location: "LB",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "DP-2306" }, { palletName: "" }, { palletName: "DP-2306" }],
     },
     {
         location: "LA",
-        level: [{ palletName: "DP-2306" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
+        level: [{ palletName: "" }, { palletName: "DP-2306" }, { palletName: "DP-2306" }],
     },
     {
         location: "MB",
