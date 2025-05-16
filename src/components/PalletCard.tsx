@@ -1,8 +1,7 @@
 import { Popover } from "@radix-ui/react-popover";
-import { Card, CardFooter, CardHeader } from "./ui/card";
+import { Card, CardHeader } from "./ui/card";
 import { PopoverContent, PopoverTrigger } from "./ui/popover";
 import { MenuIcon } from "lucide-react";
-// import { RelocatePallet } from "@/api/apiRequests";
 
 type PalletCardProps = {
     palletName: string;
@@ -11,10 +10,6 @@ type PalletCardProps = {
     isEmpty: boolean;
 };
 const PalletCard = ({ palletName, rackLocation, loopIndex, isEmpty }: PalletCardProps) => {
-    // const handleRelocate = () => {
-    //     RelocatePallet();
-    // };
-
     return (
         <div
             className={`${
