@@ -11,6 +11,7 @@ export const GetPalletByRackLocation = ({
     loopIndex,
 }: GetPalletByRackLocationProps) => {
     const rack = PalletLocations.find((loc) => loc.location === rackLocation);
+    let isEmpty = false;
 
     if (!rack) {
         console.error("Rack not found for location:", rackLocation);
@@ -18,22 +19,17 @@ export const GetPalletByRackLocation = ({
     }
 
     const pallet = rack.level[loopIndex];
-
-    if (!pallet) {
-        console.error("Pallet not found at level:", loopIndex, "in location:", rackLocation);
-        return null;
+    if (!pallet || !pallet.palletName) {
+        isEmpty = true;
     }
 
     return (
-        <PalletCard key={loopIndex} palletName={pallet.palletName} rackLocation={rackLocation} />
+        <PalletCard
+            key={loopIndex}
+            palletName={pallet.palletName}
+            rackLocation={rackLocation}
+            loopIndex={loopIndex}
+            isEmpty={isEmpty}
+        />
     );
 };
-
-// type RelocatePalletProps = {
-//     fromLocation: string;
-//     toLocation: string;
-//     palletId: string;
-// };
-// export const RelocatePallet = ({ fromLocation, toLocation, palletId }: RelocatePalletProps) => {
-//     console.log();
-// };

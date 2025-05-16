@@ -7,15 +7,21 @@ import { MenuIcon } from "lucide-react";
 type PalletCardProps = {
     palletName: string;
     rackLocation: string;
+    loopIndex: number;
+    isEmpty: boolean;
 };
-const PalletCard = ({ palletName, rackLocation }: PalletCardProps) => {
+const PalletCard = ({ palletName, rackLocation, loopIndex, isEmpty }: PalletCardProps) => {
     // const handleRelocate = () => {
     //     RelocatePallet();
     // };
 
     return (
-        <div className="bg-amber-300 flex justify-center content-center items-center border-2 border-black p-1 m-1">
-            <div className="text-sm px-2">{rackLocation}</div>
+        <div
+            className={`${
+                isEmpty ? "bg-amber-300" : "bg-green-300"
+            } flex justify-center content-center items-center border-2 border-black p-1 m-1`}
+        >
+            <div className="text-sm px-2">{rackLocation + (loopIndex + 1)}</div>
             <Card className="relative w-50 border border-dashed">
                 <Popover>
                     <PopoverTrigger asChild>
@@ -29,7 +35,6 @@ const PalletCard = ({ palletName, rackLocation }: PalletCardProps) => {
                 </Popover>
 
                 <CardHeader className="text-sm">{palletName}</CardHeader>
-                <CardFooter className="text-xs">Moved Here At: dd/mm/yyyy</CardFooter>
             </Card>
         </div>
     );
