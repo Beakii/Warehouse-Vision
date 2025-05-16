@@ -1,5 +1,5 @@
 import { getLocationInfo, mapGridToLocationName } from "@/lib/utils";
-import PalletCard from "./PalletCard";
+import { GetPalletByRackLocation } from "@/api/apiRequests";
 
 type PalletListProps = {
     gridNumberIndex: number;
@@ -12,7 +12,11 @@ const PalletList = ({ gridNumberIndex }: PalletListProps) => {
             {"Rack " + mapGridToLocationName(gridNumberIndex)}
 
             {[...Array(location.levels)].map((_, i) => {
-                return <PalletCard gridNumberIndex={gridNumberIndex} loopIndex={i} />;
+                return GetPalletByRackLocation({
+                    loopIndex: i,
+                    gridNumberIndex: gridNumberIndex,
+                    rackLocation: mapGridToLocationName(gridNumberIndex),
+                });
             })}
         </div>
     );

@@ -2,27 +2,24 @@ import { Popover } from "@radix-ui/react-popover";
 import { Card, CardFooter, CardHeader } from "./ui/card";
 import { PopoverContent, PopoverTrigger } from "./ui/popover";
 import { MenuIcon } from "lucide-react";
-import { mapGridToLocationName } from "@/lib/utils";
 // import { RelocatePallet } from "@/api/apiRequests";
 
 type PalletCardProps = {
-    gridNumberIndex: number;
-    loopIndex: number;
+    palletName: string;
+    rackLocation: string;
 };
-const PalletCard = ({ gridNumberIndex, loopIndex }: PalletCardProps) => {
+const PalletCard = ({ palletName, rackLocation }: PalletCardProps) => {
     // const handleRelocate = () => {
     //     RelocatePallet();
     // };
 
     return (
         <div className="bg-amber-300 flex justify-center content-center items-center border-2 border-black p-1 m-1">
-            <div className="text-sm px-2">
-                {mapGridToLocationName(gridNumberIndex) + (loopIndex + 1)}
-            </div>
+            <div className="text-sm px-2">{rackLocation}</div>
             <Card className="relative w-50 border border-dashed">
                 <Popover>
                     <PopoverTrigger asChild>
-                        <button className="absolute top-2 right-2 p-1 rounded hover:bg-gray-100">
+                        <button className="absolute top-2 right-2 p-1 rounded hover:bg-gray-100 hover:cursor-pointer">
                             <MenuIcon className="size-4" />
                         </button>
                     </PopoverTrigger>
@@ -31,7 +28,7 @@ const PalletCard = ({ gridNumberIndex, loopIndex }: PalletCardProps) => {
                     </PopoverContent>
                 </Popover>
 
-                <CardHeader className="text-sm">Pallet Name</CardHeader>
+                <CardHeader className="text-sm">{palletName}</CardHeader>
                 <CardFooter className="text-xs">Moved Here At: dd/mm/yyyy</CardFooter>
             </Card>
         </div>
