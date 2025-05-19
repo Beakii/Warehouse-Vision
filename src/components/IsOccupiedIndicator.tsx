@@ -1,7 +1,5 @@
-type IsOccupiedIndicatorProps = {
-    isSelected: boolean;
-    isOccupied: boolean;
-};
+import { IsOccupiedIndicatorProps } from "@/lib/types";
+
 const IsOccupiedIndicator = ({ isSelected, isOccupied }: IsOccupiedIndicatorProps) => {
     return (
         <div

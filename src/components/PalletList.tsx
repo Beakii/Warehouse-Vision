@@ -1,10 +1,7 @@
 import { getLocationInfo, mapGridToLocationName } from "@/lib/utils";
 import { GetPalletByRackLocation } from "@/api/apiRequests";
 
-type PalletListProps = {
-    gridNumberIndex: number;
-};
-const PalletList = ({ gridNumberIndex }: PalletListProps) => {
+const PalletList = ({ gridNumberIndex }: { gridNumberIndex: number }) => {
     const location = getLocationInfo(gridNumberIndex);
 
     return (

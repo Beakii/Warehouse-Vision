@@ -1,12 +1,16 @@
-import { mapGridToLocationName, PalletLocations } from "@/lib/utils";
+import { mapGridToLocationName } from "@/lib/utils";
 import IsOccupiedIndicator from "./IsOccupiedIndicator";
 
 type GridItemProps = {
     cellSize: number;
     index: number;
     isSelected: boolean;
+    palletLocations: {
+        location: string;
+        level: { palletName: string }[];
+    }[];
 };
-const GridItem = ({ index, cellSize, isSelected }: GridItemProps) => {
+const GridItem = ({ index, cellSize, isSelected, palletLocations }: GridItemProps) => {
     return (
         <div
             key={index}
@@ -19,7 +23,7 @@ const GridItem = ({ index, cellSize, isSelected }: GridItemProps) => {
         >
             {isSelected ? mapGridToLocationName(index) : null}
             {Array.from({ length: 3 }).map((_, i) => {
-                const rack = PalletLocations.find(
+                const rack = palletLocations.find(
                     (loc) => loc.location === mapGridToLocationName(index)
                 );
                 const pallet = rack?.level[i];

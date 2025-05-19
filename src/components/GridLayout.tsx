@@ -1,21 +1,26 @@
-import { RenewITLayout, updateCellSize } from "@/lib/utils";
+import { updateCellSize } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import PalletList from "./PalletList";
 import { Popover, PopoverContent } from "./ui/popover";
 import { PopoverTrigger } from "@radix-ui/react-popover";
+import { GetLayoutData, GetPalletLocationData } from "@/api/apiRequests";
 import GridItem from "./GridItem";
-
-type GridLayoutProps = {
-    gridSize: number;
-    selectedCells: number[];
-    setSelectedCells?: React.Dispatch<React.SetStateAction<number[]>>;
-};
+import PalletList from "./PalletList";
+import { GridLayoutProps } from "@/lib/types";
 
 export default function GridLayout({ gridSize, selectedCells, setSelectedCells }: GridLayoutProps) {
     const [cellSize, setCellSize] = useState(36); // default
+    const PalletLocations = GetPalletLocationData();
 
+    //Runs once on mount to set the initial cell size
     useEffect(() => {
-        setSelectedCells!(RenewITLayout);
+        const layoutData = GetLayoutData({ businessName: "renewit" });
+        if (layoutData) {
+            setSelectedCells!(layoutData);
+        }
+    }, []);
+
+    //Runs on mount and on resize to set the cell size
+    useEffect(() => {
         updateCellSize({ gridSize, setCellSize });
         const handleResize = () => updateCellSize({ gridSize, setCellSize });
         window.addEventListener("resize", handleResize);
@@ -33,12 +38,13 @@ export default function GridLayout({ gridSize, selectedCells, setSelectedCells }
                 {Array.from({ length: gridSize * gridSize }).map((_, gridNumberIndex) => {
                     const isSelected = selectedCells.includes(gridNumberIndex);
                     return (
-                        <Popover>
+                        <Popover key={gridNumberIndex}>
                             <PopoverTrigger>
                                 <GridItem
                                     index={gridNumberIndex}
                                     cellSize={cellSize}
                                     isSelected={isSelected}
+                                    palletLocations={PalletLocations}
                                 />
                             </PopoverTrigger>
 
