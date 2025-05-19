@@ -1,11 +1,9 @@
 import PalletCard from "@/components/PalletCard";
-import { PalletLocations } from "@/lib/utils";
+import PalletLocations from "../../LocalDB/PalletLocations.json";
+import locationData from "../../LocalDB/GridToNameMap.json";
+import LayoutData from "../../LocalDB/LayoutData.json";
+import { GetPalletByRackLocationProps, LocationInfo } from "@/lib/types";
 
-type GetPalletByRackLocationProps = {
-    rackLocation: string;
-    gridNumberIndex: number;
-    loopIndex: number;
-};
 export const GetPalletByRackLocation = ({
     rackLocation,
     loopIndex,
@@ -32,4 +30,27 @@ export const GetPalletByRackLocation = ({
             isEmpty={isEmpty}
         />
     );
+};
+
+export const GetRackingLocationData = () => {
+    const indexToLocationInfo = new Map<number, LocationInfo>(
+        Object.entries(locationData).map(([key, value]) => [Number(key), value])
+    );
+
+    return indexToLocationInfo;
+};
+
+export const GetLayoutData = ({ businessName }: { businessName: string }) => {
+    businessName = businessName.toLowerCase();
+    switch (businessName) {
+        case "renewit":
+            return LayoutData.RenewIT;
+        default:
+            console.error("Invalid business name:", businessName);
+            return null;
+    }
+};
+
+export const GetPalletLocationData = () => {
+    return PalletLocations;
 };
