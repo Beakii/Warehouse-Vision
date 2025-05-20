@@ -1,5 +1,7 @@
 # Warehouse Vision
 
+## Project No Longer Developed/Supported
+
 ![Warehouse Vision Screenshot](./public/preview.png)
 
 **Warehouse Vision** is an interactive warehouse management tool designed to help visualize, plan, and manage racking spaces within a warehouse.  
