@@ -3,13 +3,14 @@ import { Card, CardHeader } from "./ui/card";
 import { PopoverContent, PopoverTrigger } from "./ui/popover";
 import { MenuIcon } from "lucide-react";
 import { PalletCardProps } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
-const PalletCard = ({ palletName, rackLocation, loopIndex, isEmpty }: PalletCardProps) => {
+const PalletCard = ({ palletName, rackLocation, loopIndex, isEmpty, className }: PalletCardProps) => {
     return (
         <div
-            className={`${
+            className={cn(`${
                 isEmpty ? "bg-amber-300" : "bg-green-300"
-            } flex justify-center content-center items-center border-2 border-black p-1 m-1`}
+            } flex justify-center content-center items-center border-2 border-black p-1 m-1`, className)}
         >
             <div className="text-sm px-2">{rackLocation + (loopIndex + 1)}</div>
             <Card className="relative w-50 border border-dashed">
