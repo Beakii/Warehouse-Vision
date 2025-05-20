@@ -25,4 +25,9 @@ export type PalletCardProps = {
     rackLocation: string;
     loopIndex: number;
     isEmpty: boolean;
+    className?: string;
 };
+export type PalletListProps = {
+    gridNumberIndex?: number;
+    className?: string;
+}
