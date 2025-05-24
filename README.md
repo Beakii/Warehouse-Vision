@@ -1,6 +1,4 @@
-# Warehouse Vision
-
-## Project No Longer Developed/Supported
+# Warehouse Vision - Project is undergoing a rewrite to realign with goals
 
 ![Warehouse Vision Screenshot](./public/preview.png)
 
