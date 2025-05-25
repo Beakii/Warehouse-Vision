@@ -1,25 +1,13 @@
 import { updateCellSize } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { Popover, PopoverContent } from "./ui/popover";
-import { PopoverTrigger } from "@radix-ui/react-popover";
-import { GetLayoutData, GetPalletLocationData } from "@/api/apiRequests";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import GridItem from "./GridItem";
 import PalletList from "./PalletList";
 import { GridLayoutProps } from "@/lib/types";
 
-export default function GridLayout({ gridSize, selectedCells, setSelectedCells }: GridLayoutProps) {
-    const [cellSize, setCellSize] = useState(36); // default
-    const PalletLocations = GetPalletLocationData();
+const GridLayout = ({ gridSize, selectedCells, locationData, palletData }: GridLayoutProps) => {
+    const [cellSize, setCellSize] = useState<number>(34); // mobile default
 
-    //Runs once on mount to set the initial cell size
-    useEffect(() => {
-        const layoutData = GetLayoutData({ businessName: "renewit" });
-        if (layoutData) {
-            setSelectedCells!(layoutData);
-        }
-    }, []);
-
-    //Runs on mount and on resize to set the cell size
     useEffect(() => {
         updateCellSize({ gridSize, setCellSize });
         const handleResize = () => updateCellSize({ gridSize, setCellSize });
@@ -28,35 +16,43 @@ export default function GridLayout({ gridSize, selectedCells, setSelectedCells }
     }, [gridSize]);
 
     return (
-        <div className="flex justify-center items-center" style={{ height: "calc(100vh - 56px)" }}>
+        <div className="flex justify-center items-center h-[calc(100vh-56px)] px-2 sm:px-4">
             <div
-                className="grid gap-1 m-5 border border-dashed"
+                className="grid gap-[2px] sm:gap-1 border border-dashed border-gray-300 m-1 lg:m-5"
                 style={{
                     gridTemplateColumns: `repeat(${gridSize}, ${cellSize}px)`,
                 }}
             >
-                {Array.from({ length: gridSize * gridSize }).map((_, gridNumberIndex) => {
-                    const isSelected = selectedCells.includes(gridNumberIndex);
+                {Array.from({ length: gridSize * gridSize }).map((_, i) => {
+                    const gridIndex = i;
+                    const isSelected = selectedCells.includes(gridIndex);
                     return (
-                        <Popover key={gridNumberIndex}>
+                        <Popover key={gridIndex}>
                             <PopoverTrigger>
                                 <GridItem
-                                    index={gridNumberIndex}
+                                    gridIndex={gridIndex}
                                     cellSize={cellSize}
                                     isSelected={isSelected}
-                                    palletLocations={PalletLocations}
+                                    locationData={locationData!}
+                                    palletData={palletData!}
                                 />
                             </PopoverTrigger>
 
-                            {isSelected ? (
-                                <PopoverContent>
-                                    <PalletList gridNumberIndex={gridNumberIndex} />
+                            {isSelected && (
+                                <PopoverContent className="z-50 max-w-xs sm:max-w-sm">
+                                    <PalletList
+                                        gridIndex={gridIndex}
+                                        locationData={locationData!}
+                                        palletData={palletData!}
+                                    />
                                 </PopoverContent>
-                            ) : null}
+                            )}
                         </Popover>
                     );
                 })}
             </div>
         </div>
     );
-}
+};
+
+export default GridLayout;

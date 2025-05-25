@@ -1,5 +1,6 @@
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import { buttonVariants } from "./ui/button";
+import { MenuIcon } from "lucide-react";
 
 const Navbar = () => {
     return (
@@ -15,13 +16,13 @@ const Navbar = () => {
                         <>
                             <div
                                 className={buttonVariants({
-                                    size: "sm",
                                     variant: "ghost",
+                                    size: "sm",
+                                    className: "hidden items-center gap-1 sm:flex",
                                 })}
                             >
-                                Login
+                                <span className="text-sm font-medium">Edit</span>
                             </div>
-
                             <div className="hidden h-8 w-px bg-zinc-200 sm:block" />
 
                             <div
@@ -30,7 +31,9 @@ const Navbar = () => {
                                     className: "hidden items-center gap-1 sm:flex",
                                 })}
                             >
-                                <span className="text-sm font-medium">Edit</span>
+                                <span className="text-sm font-medium">
+                                    <MenuIcon />
+                                </span>
                             </div>
                         </>
                     </div>

@@ -1,6 +1,14 @@
-export type LocationInfo = {
-    name: string;
+export type LocationData = {
+    id: number;
+    location: string;
+    gridIndex: number;
     levels: number;
+};
+export type PalletData = {
+    id: number;
+    palletName: string;
+    location: string;
+    rackLevel: number;
 };
 export type GetPalletByRackLocationProps = {
     rackLocation: string;
@@ -14,7 +22,8 @@ export type UpdateCellsInterface = {
 export type GridLayoutProps = {
     gridSize: number;
     selectedCells: number[];
-    setSelectedCells?: React.Dispatch<React.SetStateAction<number[]>>;
+    locationData?: LocationData[];
+    palletData?: PalletData[];
 };
 export type IsOccupiedIndicatorProps = {
     isSelected: boolean;
@@ -28,6 +37,18 @@ export type PalletCardProps = {
     className?: string;
 };
 export type PalletListProps = {
-    gridNumberIndex?: number;
+    gridIndex?: number;
+    locationData: LocationData[];
+    palletData: PalletData[];
     className?: string;
-}
+};
+export type GridItemProps = {
+    cellSize: number;
+    gridIndex: number;
+    isSelected: boolean;
+    locationData: LocationData[];
+    palletData: PalletData[];
+};
+export type RelocatePalletProps = {
+    palletName: string;
+};

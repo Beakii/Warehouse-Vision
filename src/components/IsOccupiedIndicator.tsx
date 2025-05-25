@@ -3,8 +3,9 @@ import { IsOccupiedIndicatorProps } from "@/lib/types";
 const IsOccupiedIndicator = ({ isSelected, isOccupied }: IsOccupiedIndicatorProps) => {
     return (
         <div
-            className={`${isSelected ? "xl:w-full xl:h-5 border border-gray-600 pt-0.5" : ""}
-            ${isOccupied ? "bg-green-300" : "bg-amber-300"}`}
+            className={`
+                ${isSelected ? "hidden md:block w-full h-5 border border-gray-600" : ""}
+                ${isOccupied ? "bg-green-300" : "bg-amber-300"}`}
         />
     );
 };
