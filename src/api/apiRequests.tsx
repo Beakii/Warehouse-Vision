@@ -20,6 +20,17 @@ export const GetAllLocationData = () => {
     return fetch("http://localhost:3000/api/locations").then((response) => response.json());
 };
 
-export const RelocatePallet = ({ palletName }: RelocatePalletProps) => {
-    console.log("RelocatePallet function called: ", palletName);
+export const RelocatePallet = ({
+    palletName,
+    desinationRackLevel,
+    destinationLocation,
+}: RelocatePalletProps) => {
+    console.log(
+        "Relocating pallet:",
+        palletName,
+        "to",
+        destinationLocation,
+        "at level",
+        desinationRackLevel
+    );
 };

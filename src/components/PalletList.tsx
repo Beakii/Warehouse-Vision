@@ -14,8 +14,8 @@ const PalletList = ({ gridIndex, className, locationData, palletData }: PalletLi
 
     return (
         <div className={cn("h-full px-2 py-4", className)}>
-            <h2 className="text-black text-lg font-semibold mb-2">
-                {rackLocation?.gridIndex === gridIndex
+            <h2 className={`${gridIndex ? `text-black` : `text-white`} text-lg font-semibold mb-2`}>
+                {gridIndex
                     ? "Rack " + locationData?.find((loc) => loc.gridIndex === gridIndex)?.location
                     : "Unallocated Pallets"}
             </h2>
@@ -28,6 +28,9 @@ const PalletList = ({ gridIndex, className, locationData, palletData }: PalletLi
                         rackLocation={rackLocation?.location || "Unallocated"}
                         loopIndex={pallet.rackLevel ? pallet.rackLevel - 1 : i}
                         isEmpty={!pallet.location}
+                        locationOptions={locationData.map((loc) => loc.location)}
+                        locationData={locationData}
+                        palletData={palletData}
                         className="w-full"
                     />
                 ))}

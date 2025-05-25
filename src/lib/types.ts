@@ -34,6 +34,9 @@ export type PalletCardProps = {
     rackLocation: string;
     loopIndex: number;
     isEmpty: boolean;
+    locationOptions: string[];
+    locationData?: LocationData[];
+    palletData?: PalletData[];
     className?: string;
 };
 export type PalletListProps = {
@@ -51,4 +54,6 @@ export type GridItemProps = {
 };
 export type RelocatePalletProps = {
     palletName: string;
+    destinationLocation: string;
+    desinationRackLevel: number;
 };
