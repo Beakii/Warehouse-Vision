@@ -14,6 +14,7 @@ const pool = new Pool({
         rejectUnauthorized: false,
     },
 });
+app.use(express.json());
 
 // Get All Pallets Data
 app.get("/api/pallets/", async (req, res) => {
@@ -52,6 +53,29 @@ app.get("/api/locations/", async (req, res) => {
         res.json(result.rows);
     } catch (error) {
         console.error("Error fetching locations:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+app.post("/api/relocate", async (req, res) => {
+    const { palletName, destinationLocation, destinationRackLevel } = req.body;
+
+    try {
+        const result = await pool.query(
+            `
+            UPDATE pallets
+            SET "location" = $1, "rackLevel" = $2
+            WHERE "palletName" = $3
+            RETURNING *
+            `,
+            [destinationLocation, destinationRackLevel, palletName]
+        );
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: "Pallet not found" });
+        }
+        res.json({ message: "Pallet relocated successfully", pallet: result.rows[0] });
+    } catch (error) {
+        console.error("Error relocating pallet:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });

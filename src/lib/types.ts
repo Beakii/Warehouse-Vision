@@ -55,5 +55,5 @@ export type GridItemProps = {
 export type RelocatePalletProps = {
     palletName: string;
     destinationLocation: string;
-    desinationRackLevel: number;
+    destinationRackLevel: number;
 };

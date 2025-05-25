@@ -140,7 +140,7 @@ const PalletCard = ({
                                         RelocatePallet({
                                             palletName,
                                             destinationLocation: newLocation,
-                                            desinationRackLevel: newLocationLevel,
+                                            destinationRackLevel: newLocationLevel,
                                         })
                                     }
                                     type="submit"

@@ -20,17 +20,32 @@ export const GetAllLocationData = () => {
     return fetch("http://localhost:3000/api/locations").then((response) => response.json());
 };
 
-export const RelocatePallet = ({
+export const RelocatePallet = async ({
     palletName,
-    desinationRackLevel,
+    destinationRackLevel,
     destinationLocation,
 }: RelocatePalletProps) => {
-    console.log(
-        "Relocating pallet:",
-        palletName,
-        "to",
-        destinationLocation,
-        "at level",
-        desinationRackLevel
-    );
+    try {
+        const response = await fetch("http://localhost:3000/api/relocate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                palletName,
+                destinationRackLevel,
+                destinationLocation,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to relocate pallet");
+        }
+
+        const data = await response.json();
+        console.log("Success:", data);
+        return data;
+    } catch (error) {
+        console.error("Error:", error);
+    }
 };
